@@ -1,11 +1,14 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd'
+import { Form, Input, Button } from 'antd'
 
-const Login = () => {
+const Register = () => {
   return (
     <Form layout='vertical' style={{ padding: 15 }}>
       <Form.Item label='Email' required tooltip='The Email Field Is Required'>
-        <Input placeholder='Email' />
+        <Input placeholder='Email' type='email' />
+      </Form.Item>
+      <Form.Item label='Username' required tooltip='The Username Field Is Required'>
+        <Input placeholder='Username' type='text' />
       </Form.Item>
       <Form.Item
         label='Password'
@@ -14,19 +17,13 @@ const Login = () => {
       >
         <Input placeholder='Password' type='password' />
       </Form.Item>
-      <div>
-        <Checkbox>Keep me logged in</Checkbox>
-        <a style={{ float: 'right' }} href=''>
-          Forgot password?
-        </a>
-      </div>
       <Form.Item>
         <Button type='primary' style={{ marginTop: 10 }} className='btnAuth'>
-          Login
+          Register
         </Button>
       </Form.Item>
     </Form>
   )
 }
 
-export default Login
+export default Register

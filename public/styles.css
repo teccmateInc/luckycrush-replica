@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Oxygen', sans-serif !important;
+  height: 100vh;
+  margin: 0;
 }
 
 #components-layout-demo-fixed .logo {
@@ -36,6 +39,35 @@ body {
   overflow: hidden;
 }
 
+.site-layout-backdrop {
+  position: absolute;
+  background: #000;
+  opacity: 0.5;
+  width: 70vw !important;
+  height: 80vh !important;
+  min-height: 580px;
+  min-width: 703px;
+  margin: 0 auto;
+  margin-top: 32px;
+  box-shadow: -5px 6px 45px 9px rgba(0, 0, 0, 0.27);
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  top: 0;
+  left: 180px;
+}
+
+.ant-modal-mask {
+  position: fixed !important;
+  top: 92px !important;
+  right: 230px !important;
+  left: 230px !important;
+  z-index: 1000 !important;
+  height: 580px !important;
+  border-radius: 10px !important;
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
 .site-layout .site-layout-background {
   background: #fff;
 }
@@ -53,6 +85,12 @@ body {
 .lpaEYv {
   background: rgb(255, 255, 255);
   border-bottom: none;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.center-content {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -76,6 +114,11 @@ body {
   margin-right: 10px !important;
 }
 
+.option-language {
+  display: inline-block;
+  margin-right: 10px !important;
+}
+
 .menu-header {
   text-decoration: none;
   color: rgb(33, 33, 50);
@@ -85,6 +128,11 @@ body {
 
 .color-pink {
   color: rgb(249, 9, 108) !important;
+  font-weight: 600 !important;
+}
+
+.color-blue {
+  color: rgb(0, 141, 255) !important;
   font-weight: 600 !important;
 }
 
@@ -129,18 +177,138 @@ a {
   width: 550px !important;
 }
 
-.btnLanguage {
+.welcome-text {
+  margin-top: 40px;
+  font-weight: 700 !important;
+  font-size: 30px !important;
+}
+
+.second-text {
+  font-size: 22px !important;
+  margin-bottom: 0 !important;
+}
+
+.third-text {
+  font-weight: 600 !important;
+  font-size: 2em !important;
+  margin: 60px 0 !important;
+}
+
+.fourth-text {
+  font-weight: 600 !important;
+  font-size: 17px !important;
+}
+
+.fourth-text span {
+  font-weight: 100 !important;
+}
+
+.last-text {
+  font-weight: 200 !important;
+  margin: 20px 0 !important;
+  font-size: 17px !important;
+}
+
+.btnGradient {
+  font-weight: 600 !important;
+  font-size: 17px !important;
+  cursor: pointer !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  color: rgb(255, 255, 255) !important;
   border: none !important;
-  color: rgb(33, 33, 50) !important;
-  font-weight: 500 !important;
-  padding: 1px !important;
+  height: 60px !important;
+  width: 265px !important;
+  border-radius: 5px !important;
+  background: linear-gradient(
+    rgb(249, 9, 108) 30%,
+    rgb(255, 111, 106) 100%
+  ) !important;
+}
+
+.btnAuth {
+  font-weight: 600 !important;
+  font-size: 17px !important;
+  cursor: pointer !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  color: rgb(255, 255, 255) !important;
+  border: none !important;
+  height: 60px !important;
+  width: 100% !important;
+  border-radius: 5px !important;
+  background: linear-gradient(
+    rgb(249, 9, 108) 30%,
+    rgb(255, 111, 106) 100%
+  ) !important;
+}
+
+.ant-form-item-control-input-content {
+  margin-top: 22px;
+}
+
+.auth-modal {
+  top: 180 !important;
+  height: 431.8px !important;
+  border-radius: 25px !important;
+}
+
+.ant-modal-body {
+  padding: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.5715 !important;
+  word-wrap: break-word !important;
+}
+
+.ant-tabs-nav-list {
+  width: 100%;
+}
+
+.ant-tabs-tab {
+  width: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  font-size: 18px !important;
   font-weight: 600 !important;
 }
 
-.btnLanguage:hover {
-  border: none !important;
-  color: rgb(33, 33, 50) !important;
-  font-weight: 500 !important;
-  padding: 1px !important;
-  font-weight: 600 !important;
+.ant-tabs-tab:hover {
+  color: rgb(249, 9, 108) !important;
 }
+
+.ant-tabs-tab-active {
+  background: rgb(255, 255, 255) !important;
+  color: rgb(249, 9, 108) !important;
+}
+
+.ant-tabs-tab-active:hover {
+  background: rgb(255, 255, 255) !important;
+  color: rgb(249, 9, 108) !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: rgb(249, 9, 108) !important;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab,
+.ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
+  border: none !important;
+}
+
+.ant-tabs-nav {
+  height: 55.6px;
+}
+
+/* @media only screen and (min-width: 600px) {
+  .ant-layout {
+    height: 202vh;
+    width: 119vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .ant-layout {
+    height: 177vh;
+    width: 119vh;
+  }
+} */

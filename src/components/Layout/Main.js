@@ -1,11 +1,12 @@
 import React from 'react'
-import { Layout } from 'antd'
-import Login from '../Auth/Login'
+import { Layout, Row, Col } from 'antd'
+import ContentSection from '../Layout/ContentSection'
 import ContentNav from './ContentNav'
 
 const { Content } = Layout
 
 const Main = () => {
+
   return (
     <Layout>
       <div className='logo'>
@@ -16,10 +17,14 @@ const Main = () => {
         </h3>
       </div>
       <Content className='site-layout'>
-        <div className='site-layout-background'>
-          <ContentNav />
-          {/* <Login /> */}
-        </div>
+        <Row>
+          <Col span={24}>
+            <div className='site-layout-background'>
+              <ContentNav />        
+              <ContentSection />
+            </div>
+          </Col>
+        </Row>
       </Content>
     </Layout>
   )
