@@ -5,14 +5,14 @@ import { FaVideo } from 'react-icons/fa'
 const ContentSection = () => {
   return (
     <Fragment style={{ background: '#F8F8F8' }}>
-      <Row>
+      <Row className='site-layout-content'>
         <Col span={24} className='center-content'>
-          <h1 className='welcome-text'>
+          <h1 className='welcome-text bold-text'>
             {' '}
             Welcome to the LuckyCrush video chat
           </h1>
         </Col>
-        <Col span={24} style={{ marginTop: '10px' }}>
+        <Col span={24} style={{ marginTop: '15px' }}>
           <p className='second-text'>
             <span className='color-blue'>Men</span> are randomly paired with{' '}
             <span className='color-pink'>women</span>.

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
 * {
   box-sizing: border-box;
@@ -6,7 +6,7 @@
 
 html,
 body {
-  font-family: 'Oxygen', sans-serif !important;
+  font-family: 'Space Grotesk', sans-serif !important;
   height: 100vh;
   margin: 0;
 }
@@ -25,10 +25,9 @@ body {
 }
 
 .site-layout-background {
-  width: 70vw !important;
-  height: 80vh !important;
-  min-height: 580px;
-  min-width: 703px;
+  width: 80% !important;
+  height: 93% !important;
+  min-height: 100%;
   margin: 0 auto;
   margin-top: 32px;
   box-shadow: -5px 6px 45px 9px rgba(0, 0, 0, 0.27);
@@ -39,7 +38,7 @@ body {
   overflow: hidden;
 }
 
-.site-layout-backdrop {
+/* .site-layout-backdrop {
   position: absolute;
   background: #000;
   opacity: 0.5;
@@ -55,9 +54,9 @@ body {
   overflow: hidden;
   top: 0;
   left: 180px;
-}
+} */
 
-.ant-modal-mask {
+/* .ant-modal-mask {
   position: fixed !important;
   top: 92px !important;
   right: 230px !important;
@@ -66,10 +65,10 @@ body {
   height: 580px !important;
   border-radius: 10px !important;
   background-color: rgba(0, 0, 0, 0.45) !important;
-}
+} */
 
 .site-layout .site-layout-background {
-  background: #fff;
+  background: #f8f8f8 !important;
 }
 
 .site-footer {
@@ -177,14 +176,17 @@ a {
   width: 550px !important;
 }
 
+.bold-text {
+  font-weight: 900 !important;
+}
+
 .welcome-text {
   margin-top: 40px;
-  font-weight: 700 !important;
   font-size: 30px !important;
 }
 
 .second-text {
-  font-size: 22px !important;
+  font-size: 20px !important;
   margin-bottom: 0 !important;
 }
 
@@ -299,16 +301,46 @@ a {
   height: 55.6px;
 }
 
-/* @media only screen and (min-width: 600px) {
-  .ant-layout {
-    height: 202vh;
-    width: 119vh;
-  }
+@media (min-width: 1490px) {
 }
 
-@media only screen and (max-width: 600px) {
-  .ant-layout {
-    height: 177vh;
-    width: 119vh;
+@media (max-width: 2560px) {
+}
+
+@media (max-width: 1491px) {
+}
+
+@media (max-width: 1110px) {
+}
+
+@media (max-width: 980px) {
+}
+
+@media (min-width: 701px) {
+  .site-layout-background {
+    width: 70vw !important;
+    height: 80vh !important;
+    min-height: 580px;
+    min-width: 703px;
+    position: relative;
+    box-shadow: -5px 6px 45px 9px rgb(0 0 0 / 27%);
+    border-radius: 10px;
+    overflow: hidden;
   }
-} */
+
+  .site-layout-content {
+    margin-top: 10%;
+  }
+
+  .ant-modal-mask {
+    top: 92px !important;
+    width: 70% !important;
+    margin-left: 15% !important;
+    height: 923px !important;
+    border-radius: 10px !important;
+  }
+
+  .ant-modal-content {
+    margin-top: 50% !important;
+  }
+}

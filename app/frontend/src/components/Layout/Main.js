@@ -6,7 +6,6 @@ import ContentNav from './ContentNav'
 const { Content } = Layout
 
 const Main = () => {
-
   return (
     <Layout>
       <div className='logo'>
@@ -20,7 +19,7 @@ const Main = () => {
         <Row>
           <Col span={24}>
             <div className='site-layout-background'>
-              <ContentNav />        
+              <ContentNav />
               <ContentSection />
             </div>
           </Col>
