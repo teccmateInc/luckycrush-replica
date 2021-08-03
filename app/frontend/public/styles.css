@@ -11,6 +11,28 @@ body {
   margin: 0;
 }
 
+.logo-loader {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-loader {
+    animation: logo-loader-spin infinite 3s linear;
+  }
+}
+
+@keyframes logo-loader-spin {
+  from {
+    /* transform: rotate(0deg); */
+    transform: scale(1.25);
+  }
+  to {
+    /* transform: rotate(360deg); */
+    transform: scale(1);
+  }
+}
+
 #components-layout-demo-fixed .logo {
   float: left;
   width: 120px;
@@ -38,37 +60,20 @@ body {
   overflow: hidden;
 }
 
-/* .site-layout-backdrop {
-  position: absolute;
-  background: #000;
-  opacity: 0.5;
-  width: 70vw !important;
-  height: 80vh !important;
-  min-height: 580px;
-  min-width: 703px;
-  margin: 0 auto;
-  margin-top: 32px;
-  box-shadow: -5px 6px 45px 9px rgba(0, 0, 0, 0.27);
-  border-radius: 10px;
-  text-align: center;
-  overflow: hidden;
-  top: 0;
-  left: 180px;
-} */
-
-/* .ant-modal-mask {
-  position: fixed !important;
-  top: 92px !important;
-  right: 230px !important;
-  left: 230px !important;
-  z-index: 1000 !important;
-  height: 580px !important;
-  border-radius: 10px !important;
-  background-color: rgba(0, 0, 0, 0.45) !important;
-} */
-
 .site-layout .site-layout-background {
-  background: #f8f8f8 !important;
+  background: #f8f8f8;
+}
+
+.blank-background {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-mid-layout {
+  margin-top: 13%;
+  text-align: center;
 }
 
 .site-footer {
@@ -76,9 +81,8 @@ body {
 }
 
 .ant-layout {
-  background: #ff7af5 !important;
   background: linear-gradient(130deg, #ff7af5 0%, #5961f9 100%) !important;
-  height: 100vh;
+  height: 800px !important ;
 }
 
 .lpaEYv {
@@ -125,9 +129,13 @@ body {
   cursor: pointer;
 }
 
-.color-pink {
+.color-pink,
+.btn-hover:hover {
   color: rgb(249, 9, 108) !important;
-  font-weight: 600 !important;
+}
+
+.color-grey {
+  color: #8c8c8c !important;
 }
 
 .color-blue {
@@ -211,6 +219,13 @@ a {
   font-size: 17px !important;
 }
 
+.ad-pic {
+  background-position: 70% 60%;
+  width: 107.5%;
+  position: absolute;
+  left: -4%;
+}
+
 .btnGradient {
   font-weight: 600 !important;
   font-size: 17px !important;
@@ -226,6 +241,11 @@ a {
     rgb(249, 9, 108) 30%,
     rgb(255, 111, 106) 100%
   ) !important;
+}
+
+.btnTryNow {
+  width: 178px !important;
+  font-size: 23px !important;
 }
 
 .btnAuth {
@@ -245,14 +265,35 @@ a {
   ) !important;
 }
 
+.btn-transparent {
+  border: none !important;
+  background-color: transparent !important;
+}
+
 .ant-form-item-control-input-content {
   margin-top: 22px;
 }
 
+.payment-modal,
 .auth-modal {
   top: 180 !important;
   height: 431.8px !important;
   border-radius: 25px !important;
+}
+
+.payment-modal .ant-modal-content {
+  margin-top: 4% !important;
+  height: 100% !important;
+  padding: 8% !important;
+}
+
+.payment-modal .ant-btn-primary {
+  background: #5aad45 !important;
+  border-color: #5aad45 !important;
+}
+
+.payment-modal .ant-modal-footer {
+  padding: 10px 0px;
 }
 
 .ant-modal-body {
@@ -301,6 +342,31 @@ a {
   height: 55.6px;
 }
 
+.blur-image-text {
+  color: white;
+  font-size: 35px;
+  font-weight: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* .ant-modal-mask {
+  display: none !important;
+} */
+
+.ant-radio-button-wrapper {
+  width: 364% !important;
+}
+
+@supports (-moz-appearance: none) {
+}
+
 @media (min-width: 1490px) {
 }
 
@@ -313,13 +379,14 @@ a {
 @media (max-width: 1110px) {
 }
 
-@media (max-width: 980px) {
+@media (min-width: 2561px) {
 }
 
-@media (min-width: 701px) {
+@media (min-width: 1441px) {
+  .blank-layout-background,
   .site-layout-background {
     width: 70vw !important;
-    height: 80vh !important;
+    height: 60vh !important;
     min-height: 580px;
     min-width: 703px;
     position: relative;
@@ -332,15 +399,17 @@ a {
     margin-top: 10%;
   }
 
-  .ant-modal-mask {
-    top: 92px !important;
-    width: 70% !important;
-    margin-left: 15% !important;
-    height: 923px !important;
-    border-radius: 10px !important;
+  .ant-modal-content {
+    margin-top: 50% !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-layout-content {
+    margin-top: 0;
   }
 
   .ant-modal-content {
-    margin-top: 50% !important;
+    margin-top: 10% !important;
   }
 }

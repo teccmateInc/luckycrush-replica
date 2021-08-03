@@ -6,11 +6,13 @@ const cookieParser = require('cookie-parser')
 
 const errorMiddleware = require('./middlewares/errors')
 
+const user = require('./routes/user')
+
+require('dotenv').config({ path: 'backend/config/config.env' })
+
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
-
-const user = require('./routes/user')
 
 app.use('/api/v1', user)
 

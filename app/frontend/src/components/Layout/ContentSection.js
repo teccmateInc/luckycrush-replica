@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Row, Col, Button } from 'antd'
 import { FaVideo } from 'react-icons/fa'
 
 const ContentSection = () => {
   return (
-    <Fragment style={{ background: '#F8F8F8' }}>
+    <div style={{ background: '#F8F8F8' }}>
       <Row className='site-layout-content'>
         <Col span={24} className='center-content'>
           <h1 className='welcome-text bold-text'>
@@ -41,7 +41,7 @@ const ContentSection = () => {
           </p>
         </Col>
       </Row>
-    </Fragment>
+    </div>
   )
 }
 

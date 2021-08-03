@@ -1,0 +1,11 @@
+{
+  "name": "lucky-crush",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon backend/server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
