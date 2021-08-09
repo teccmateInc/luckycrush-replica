@@ -1,18 +1,46 @@
 import React from 'react'
-import { Divider, Radio, Space, Typography } from 'antd'
+import { Button, Divider, Radio, Space, Typography, Row, Col } from 'antd'
+import { LanguageContext } from '../../helper/providers/language'
 
-const PaymentInfo = ({ setSelectedPayment }) => {
+const PaymentInfo = ({
+  setSelectedPayment,
+  setSelectedMinutes,
+  handleOkClick,
+}) => {
+  const { lang } = React.useContext(LanguageContext)
+  const { language: content } = lang
+
   return (
     <React.Fragment>
-      <Radio.Group size='large' onChange={''} defaultValue='a'>
+      <Radio.Group
+        size='large'
+        onChange={(e) => {
+          console.log(e.target.value)
+          setSelectedMinutes(e.target.value)
+        }}
+      >
         <Space direction='vertical'>
-          <Radio.Button value='a'>Hangzhou</Radio.Button>
-          <Radio.Button value='b'>Shanghai</Radio.Button>
-          <Radio.Button value='c'>Beijing</Radio.Button>
-          <Radio.Button value='d'>Chengdu</Radio.Button>
+          <Radio.Button value='1'>
+            <Row>
+              <Col span='20'>15 min</Col>
+              <Col span='4'>$16.90</Col>
+            </Row>
+          </Radio.Button>
+          <Radio.Button value='2'>
+            <Row>
+              <Col span='20'>45 min</Col>
+              <Col span='4'>$48.90</Col>
+            </Row>
+          </Radio.Button>
+          <Radio.Button value='3'>
+            <Row>
+              <Col span='20'>90 min</Col>
+              <Col span='4'>$89.90</Col>
+            </Row>
+          </Radio.Button>
         </Space>
       </Radio.Group>
-      <Divider></Divider>
+      <Divider />
       <Radio.Group>
         <Space direction='vertical'>
           <Radio
@@ -31,8 +59,25 @@ const PaymentInfo = ({ setSelectedPayment }) => {
         </Space>
       </Radio.Group>
       <Typography.Paragraph ellipsis={false}>
-        Online payment processing for internet businesses
+        {content.payment.stripeSubHeading}
       </Typography.Paragraph>
+      <Button className='payment-modal-button' onClick={handleOkClick}>
+        {content.payment.buy}
+      </Button>
+      <div className='payment-descr'>
+        <Row>
+          <Col span='24'>
+            <img width={65} src='/img/stripe.png' alt='stripe' />
+          </Col>
+        </Row>
+      </div>
+      <Row>
+        <Col span='24'>
+          <Typography.Paragraph ellipsis={false}>
+            {content.payment.info}
+          </Typography.Paragraph>
+        </Col>
+      </Row>
     </React.Fragment>
   )
 }

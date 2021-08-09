@@ -244,7 +244,6 @@ a {
 }
 
 .btnTryNow {
-  width: 178px !important;
   font-size: 23px !important;
 }
 
@@ -270,15 +269,15 @@ a {
   background-color: transparent !important;
 }
 
-.ant-form-item-control-input-content {
-  margin-top: 22px;
-}
-
 .payment-modal,
 .auth-modal {
   top: 180 !important;
   height: 431.8px !important;
   border-radius: 25px !important;
+}
+
+.payment-modal {
+  height: 84% !important;
 }
 
 .payment-modal .ant-modal-content {
@@ -287,9 +286,11 @@ a {
   padding: 8% !important;
 }
 
-.payment-modal .ant-btn-primary {
+.payment-modal-button {
   background: #5aad45 !important;
   border-color: #5aad45 !important;
+  color: #fff !important;
+  width: 100% !important;
 }
 
 .payment-modal .ant-modal-footer {
@@ -361,7 +362,27 @@ a {
 } */
 
 .ant-radio-button-wrapper {
-  width: 364% !important;
+  width: 300% !important;
+}
+
+.ant-radio-button-wrapper:hover,
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  color: #5aad45 !important;
+  border-color: #5aad45 !important;
+}
+
+.payment-descr,
+.center-align {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.card-info {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 @supports (-moz-appearance: none) {

@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react'
 import { Row, Col, Button } from 'antd'
+import { LanguageContext } from '../../helper/providers/language'
 
 const ContentSection = () => {
   const imgWidth = '500'
   const imgHeight = '325'
+
+  const { lang, setLanguage } = React.useContext(LanguageContext)
+  const { language: content } = lang
 
   const goToTop = () => {
     document.body.scrollTop = 0
@@ -21,7 +25,7 @@ const ContentSection = () => {
               fontSize: '2.5em',
             }}
           >
-            Live random video chat with opposite-sex partners
+            {content.lowerHeader}
           </h1>
         </Col>
         <Col span={24} style={{ marginTop: '15px' }}>
@@ -30,8 +34,7 @@ const ContentSection = () => {
               fontWeight: '100',
             }}
           >
-            On LuckyCrush, guys are connected to random girls and girls are
-            connected to random guys!
+            {content.lowerSubHeader}
           </h2>
         </Col>
 
@@ -53,18 +56,14 @@ const ContentSection = () => {
                   fontSize: '2.5em',
                 }}
               >
-                Random 1-on-1 video chat
+                {content.randomOneOnOneChat.title}
               </h1>
               <h3
                 style={{
                   fontWeight: '100',
                 }}
               >
-                Start a private video chat with a random, opposite-sex partner
-                in just 10 seconds. LuckyCrush randomly connects guys with girls
-                and girls with guys. If you don’t like your match, just click
-                “Next” to be connected with a new partner in a second. Meeting
-                girls and guys from all over the world has never been easier.
+                {content.randomOneOnOneChat.text}
               </h3>
             </Col>
           </Row>
@@ -80,18 +79,14 @@ const ContentSection = () => {
                   fontSize: '2.5em',
                 }}
               >
-                Guys are only matched with girls
+                {content.guysMatchGirls.title}
               </h1>
               <h3
                 style={{
                   fontWeight: '100',
                 }}
               >
-                As a man, you have probably already experienced random chat
-                sites where you match with 90% of guys. On LuckyCrush, guys only
-                connect with girls, and girls only with guys. No need to click
-                “next” hundreds of time to find a sexy girl anymore. You will
-                only connect with opposite-sex people.
+                {content.guysMatchGirls.text}
               </h3>
             </Col>
             <Col span={12} lg={{ span: 12 }} sm={{ span: 24 }}>
@@ -123,19 +118,14 @@ const ContentSection = () => {
                   fontSize: '2.5em',
                 }}
               >
-                Instant translation
+                {content.instantTranslation.title}
               </h1>
               <h3
                 style={{
                   fontWeight: '100',
                 }}
               >
-                When connecting with random people from all over the world, you
-                might not always speak the same language as your partner. No
-                problem! An instant translation system automatically translates
-                incoming messages into your language and outgoing messages into
-                your partner's language. You won't even realise that your
-                partner is on the other side of the world.
+                {content.instantTranslation.text}
               </h3>
             </Col>
           </Row>
@@ -148,23 +138,20 @@ const ContentSection = () => {
             height={'100%'}
             className='ad-pic'
           />
-          <h2 className='blur-image-text'>
-            1 million members from 100+ countries
-          </h2>
+          <h2 className='blur-image-text'>{content.imageText}</h2>
         </Col>
         <Col span={24} className='center-content' style={{ height: '135px' }}>
           <h2
             className='blur-image-text'
             style={{ color: '#f9086c', fontWeight: 'bold' }}
           >
-            Want to give it a try?
+            {content.wannaTry}
           </h2>
         </Col>
         <Col span={12} offset={6}>
           <h3 style={{ color: '#98a0a6' }}>
-            Select your gender, click "start searching"... That's it! You're in
-            a private live video chat with a random, opposite-sex partner.{' '}
-            <b>No signup needed</b>
+            {content.genderSearching.first}
+            <b>{content.genderSearching.second}</b>
           </h3>
         </Col>
         <Col
@@ -173,21 +160,39 @@ const ContentSection = () => {
           style={{ paddingTop: '30px' }}
         >
           <Button className={['btnGradient', 'btnTryNow']} onClick={goToTop}>
-            Try now
+            {content.tryNow}
           </Button>
         </Col>
         <Col span={24} style={{ paddingTop: '75px' }}>
-          <h3 style={{ color: '#98a0a6' }}>Languages | en | fr |</h3>
+          <h3 style={{ color: '#98a0a6' }}>
+            {content.language}
+            {' | '}
+            <a onClick={() => setLanguage('en')} style={{ color: '#98a0a6' }}>
+              en
+            </a>
+            {' | '}
+            <a onClick={() => setLanguage('fr')} style={{ color: '#98a0a6' }}>
+              fr
+            </a>
+            {' | '}
+          </h3>
         </Col>
         <Col span={24} style={{ paddingTop: '50px' }}>
           <h3 style={{ color: '#98a0a6' }}>
-            Legal &amp; Contact | Privacy &amp; Cookies | Terms &amp; Conditions
-            | Email us | Blog
+            {content.legalContact +
+              ' | ' +
+              content.privacyCookies +
+              ' | ' +
+              content.termsConditions +
+              ' | ' +
+              content.emailUs +
+              ' | ' +
+              content.blog}
           </h3>
         </Col>
         <Col span={24} style={{ paddingTop: '25px' }}>
           <h3 style={{ color: '#98a0a6' }}>
-            Copyright &copy; LuckyCrush {new Date().getFullYear()}
+            {content.copyRight} &copy; LuckyCrush {new Date().getFullYear()}
           </h3>
         </Col>
       </Row>

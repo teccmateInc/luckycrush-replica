@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { message, Form, Input, Button } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { register, clearErrors } from '../../actions/authAction'
+import { LanguageContext } from '../../helper/providers/language'
 
 const Register = () => {
+  const { lang } = React.useContext(LanguageContext)
+  const { language: content } = lang
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -39,26 +43,26 @@ const Register = () => {
 
   return (
     <Form layout='vertical' style={{ padding: 15 }}>
-      <Form.Item label='Email' required tooltip='The Email Field Is Required'>
-        <Input placeholder='Email' type='email' />
+      <Form.Item label={content.email} required tooltip={content.emailTooltip}>
+        <Input placeholder={content.emailPlaceholder} type='email' />
       </Form.Item>
       <Form.Item
-        label='Username'
+        label={content.username}
         required
-        tooltip='The Username Field Is Required'
+        tooltip={content.usernameTooltip}
       >
-        <Input placeholder='Username' type='text' />
+        <Input placeholder={content.usernamePlaceholder} type='text' />
       </Form.Item>
       <Form.Item
-        label='Password'
+        label={content.password}
         required
-        tooltip='The Password Field Is Required'
+        tooltip={content.passwordTooltip}
       >
-        <Input placeholder='Password' type='password' />
+        <Input placeholder={content.passwordPlaceholder} type='password' />
       </Form.Item>
       <Form.Item>
         <Button type='primary' style={{ marginTop: 10 }} className='btnAuth'>
-          Register
+          {content.register}
         </Button>
       </Form.Item>
     </Form>

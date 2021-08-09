@@ -8,51 +8,56 @@ import Register from '../Auth/Register'
 import BuyMinutes from './BuyMinutes'
 import TextWithFlag from './TextWithFlag'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../../actions/authAction'
+import { logout, clearErrors } from '../../actions/authAction'
+import { LanguageContext } from '../../helper/providers/language'
+
 const { TabPane } = Tabs
 
-const minutesMenu = (
-  <Menu>
-    <Menu.Item>
-      <a href='/' className='color-grey'>
-        0 Minute(s)
-      </a>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item>
-      <BuyMinutes
-        className={['color-pink', 'btn-transparent']}
-        text='Buy Minutes'
-      />
-    </Menu.Item>
-  </Menu>
-)
-
-const languageMenu = (
-  <Menu>
-    <Menu.Item>
-      <a href='/'>
-        <TextWithFlag text={'English'} alt={'US'} src={'/img/flag-us.svg'} />
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a href='/'>
-        <TextWithFlag text={'Français'} alt={'FR'} src={'/img/flag-fr.svg'} />
-      </a>
-    </Menu.Item>
-  </Menu>
-)
-
 const ContentNav = () => {
+  const { lang, setLanguage } = React.useContext(LanguageContext)
+  const { code, language: content } = lang
+
   const [showModal, setShowModal] = React.useState(false)
   const [tabKey, setTabKey] = React.useState('1')
-  // const [language, setLanguage] = React.useState('English')
-  const language = 'English'
 
   const dispatch = useDispatch()
 
-  const { isAuthenticated, loggedIn, loggedOut, user } = useSelector(
+  const { isAuthenticated, loggedIn, loggedOut, user, error } = useSelector(
     (state) => state.auth
+  )
+
+  const minutesMenu = (
+    <Menu>
+      <Menu.Item>
+        <span className='center-align'>
+          <a href='/' className='color-grey'>
+            0 {content.minute}
+          </a>
+        </span>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item>
+        <BuyMinutes
+          className={['color-pink', 'btn-transparent']}
+          text={content.buyMinutes}
+        />
+      </Menu.Item>
+    </Menu>
+  )
+
+  const languageMenu = (
+    <Menu>
+      <Menu.Item>
+        <a onClick={() => setLanguage('en')}>
+          <TextWithFlag text={'English'} alt={'US'} src={'/img/flag-us.svg'} />
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a onClick={() => setLanguage('fr')}>
+          <TextWithFlag text={'Français'} alt={'FR'} src={'/img/flag-fr.svg'} />
+        </a>
+      </Menu.Item>
+    </Menu>
   )
 
   const logInSuccess = () => message.success('Login Successful')
@@ -64,6 +69,10 @@ const ContentNav = () => {
 
   React.useEffect(() => {
     if (loggedOut) message.info('Logout Successful')
+    if (error) {
+      message.error('Login Failed, ' + error)
+      dispatch(clearErrors())
+    }
   }, [loggedOut])
 
   const userMenu = (
@@ -73,7 +82,7 @@ const ContentNav = () => {
           onClick={() => dispatch(logout())}
           className={['btn-transparent', 'btn-hover']}
         >
-          Logout
+          {content.logout}
         </Button>
       </Menu.Item>
       <Menu.Divider />
@@ -104,7 +113,7 @@ const ContentNav = () => {
           </a>
           <Dropdown overlay={languageMenu} placement='bottomCenter' arrow>
             <a className='sc-ksluID option-language menu-header'>
-              {language === 'English' ? (
+              {code === 'en' ? (
                 <TextWithFlag
                   text={'English'}
                   alt={'US'}
@@ -150,14 +159,14 @@ const ContentNav = () => {
               id='login'
               onClick={() => authModal('1')}
             >
-              Login
+              {content.login}
             </a>
             <a
               className='sc-ksluID kFmqyc menu-header color-pink'
               id='register'
               onClick={() => authModal('2')}
             >
-              Register
+              {content.register}
             </a>
             <Modal
               className='auth-modal'
@@ -166,12 +175,16 @@ const ContentNav = () => {
               onCancel={() => setShowModal(false)}
               width={360}
             >
-              <Tabs type='card' defaultActiveKey={tabKey}>
-                <TabPane tab='Login' key='1'>
-                  <Login setShowModal={setShowModal} />
+              <Tabs
+                type='card'
+                activeKey={tabKey}
+                onTabClick={() => setTabKey(tabKey === '1' ? '2' : '1')}
+              >
+                <TabPane tab={content.login} key='1'>
+                  <Login setShowModal={setShowModal} setTabKey={setTabKey} />
                 </TabPane>
-                <TabPane tab='Register' key='2'>
-                  <Register setShowModal={setShowModal} />
+                <TabPane tab={content.register} key='2'>
+                  <Register setShowModal={setShowModal} setTabKey={setTabKey} />
                 </TabPane>
               </Tabs>
             </Modal>

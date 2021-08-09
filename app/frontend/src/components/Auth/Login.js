@@ -1,18 +1,19 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { message, Form, Input, Button } from 'antd'
+import React, { Fragment, useState } from 'react'
+import { Form, Input, Button } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { login, clearErrors } from '../../actions/authAction'
+import { login } from '../../actions/authAction'
+import { LanguageContext } from '../../helper/providers/language'
 
 const Login = (props) => {
+  const { lang } = React.useContext(LanguageContext)
+  const { language: content } = lang
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const dispatch = useDispatch()
 
-  const { error, loading } = useSelector((state) => state.auth)
-
-  const logInFailed = (errorMessage) =>
-    message.error('Login Failed, ' + errorMessage)
+  const { loading } = useSelector((state) => state.auth)
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -20,35 +21,28 @@ const Login = (props) => {
     props.setShowModal(false)
   }
 
-  useEffect(() => {
-    if (error) {
-      logInFailed(error)
-      dispatch(clearErrors())
-    }
-  }, [dispatch, error])
-
   return (
     <Fragment>
       {!loading && (
         <Form layout='vertical' style={{ padding: 15 }}>
           <Form.Item
-            label='Email'
+            label={content.email}
             required
-            tooltip='The Email Field Is Required'
+            tooltip={content.emailTooltip}
           >
             <Input
-              placeholder='Email'
+              placeholder={content.emailPlaceholder}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Item>
           <Form.Item
-            label='Password'
+            label={content.password}
             required
-            tooltip='The Password Field Is Required'
+            tooltip={content.passwordTooltip}
           >
             <Input
-              placeholder='Password'
+              placeholder={content.passwordPlaceholder}
               type='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -57,7 +51,7 @@ const Login = (props) => {
           <Form.Item>
             <div>
               <a style={{ float: 'right' }} href=''>
-                Forgot Password?
+                {content.forgetPassword}
               </a>
             </div>
           </Form.Item>
@@ -68,8 +62,13 @@ const Login = (props) => {
               className='btnAuth'
               onClick={submitHandler}
             >
-              Login
+              {content.login}
             </Button>
+          </Form.Item>
+          <Form.Item>
+            <div className='center-align'>
+              <a onClick={() => props.setTabKey('2')}>{content.haveAccount}</a>
+            </div>
           </Form.Item>
         </Form>
       )}
